@@ -1,0 +1,40 @@
+# Monthly Payment Calculator
+
+# Function to calculate monthly payment
+def calculate_monthly_payment(principal, annual_interest_rate, loan_years):
+    # Convert annual interest rate to monthly and decimal form
+    monthly_interest_rate = annual_interest_rate / 12 / 100
+    # Convert loan years to months
+    loan_months = loan_years * 12
+    # Calculate monthly payment using the formula provided
+    payment = principal * (monthly_interest_rate * (1 + monthly_interest_rate)**loan_months) / (((1 + monthly_interest_rate)**loan_months) - 1)
+    return payment
+
+# Initialize the number of loans processed
+loans_processed = 0
+
+# Main loop
+while True:
+    print("\nMonthly Payment Calculator")
+    
+    # Input the loan details from the user
+    principal = float(input("How much is the loan? "))
+    annual_interest_rate = float(input("Annual interest rate (i.e., 6.5)? "))
+    loan_years = int(input("How many years? "))
+    
+    # Calculate the monthly payment using the function
+    monthly_payment = calculate_monthly_payment(principal, annual_interest_rate, loan_years)
+    
+    # Display the monthly payment with 2 decimal places and a dollar sign
+    print(f"Payment is ${monthly_payment:.2f}")
+    
+    # Ask the user if they want to calculate another loan
+    go_again = input("Go again (Y/N)? ").strip().lower()
+    
+    if go_again != 'y':
+        break  # Exit the loop if the user doesn't want to calculate another loan
+    else:
+        loans_processed += 1
+
+# Display the total number of loans processed
+print(f"Loans processed today: {loans_processed}")
