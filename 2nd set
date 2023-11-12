@@ -1,0 +1,31 @@
+# Function to compute the total price
+def calculate_total_price(unit_price, quantity):
+    # Calculate the bulk price
+    bulk_price = unit_price * quantity
+    # Calculate sales tax (9.5%)
+    sales_tax = bulk_price * 0.095
+    # Calculate shipping charge ($3 per book)
+    shipping_charge = 3 * quantity
+    # Calculate the total price
+    total_price = bulk_price + sales_tax + shipping_charge
+    return total_price
+
+print("Welcome to the Old College Bookstore")
+
+# Main loop
+while True:
+    unit_price = float(input("What is the price of the book? "))
+    quantity = int(input("How many books will be ordered? "))
+    
+    # Calculate the total price using the function
+    total_price = calculate_total_price(unit_price, quantity)
+    
+    # Display the total price
+    print(f"Total is ${total_price:.2f}")
+    
+    another_order = input("Any more books (Y/N)? ").strip().lower()
+    
+    if another_order != 'y':
+        break  # Exit the loop if the user does not want to place another order
+
+print("Have a nice day!")
